@@ -38,12 +38,13 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => onSelect('components')}>Components</TabButton>
-            <TabButton onSelect={() => onSelect('jsx')}>JSX</TabButton>
-            <TabButton onSelect={() => onSelect('props')}>Props</TabButton>
-            <TabButton onSelect={() => onSelect('state')}>State</TabButton>
+            {CORE_CONCEPTS.map(concept => (
+              <TabButton key={concept.id} isSelected={selectedComponent === concept.id} onSelect={() => onSelect(concept.id)}>
+                {concept.title}
+              </TabButton>
+            ))}
           </menu>          
-            {tabContent}
+          {tabContent}
         </section>
       </main>
     </div>
