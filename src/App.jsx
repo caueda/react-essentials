@@ -6,10 +6,23 @@ import TabButton from './components/TabButton.jsx';
 import './components/Header/Header.css';
 
 function App() {
-  const [selectedComponent, setTabContent] = useState('components');
+  const [selectedComponent, setTabContent] = useState();
   const onSelect = (component) => { 
     setTabContent(component);
   };
+  let tabContent = <p>Please select a topic.</p>;
+
+  if(selectedComponent) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedComponent].title}</h3>
+        <p>{EXAMPLES[selectedComponent].description}</p>
+        <code>
+          {EXAMPLES[selectedComponent].code}
+        </code>
+      </div>
+    );
+  }
   return (
     <div>      
       <Header />
@@ -29,14 +42,8 @@ function App() {
             <TabButton onSelect={() => onSelect('jsx')}>JSX</TabButton>
             <TabButton onSelect={() => onSelect('props')}>Props</TabButton>
             <TabButton onSelect={() => onSelect('state')}>State</TabButton>
-          </menu>
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedComponent].title}</h3>
-            <p>{EXAMPLES[selectedComponent].description}</p>
-            <code>
-              {EXAMPLES[selectedComponent].code}
-            </code>
-          </div>
+          </menu>          
+            {tabContent}
         </section>
       </main>
     </div>
