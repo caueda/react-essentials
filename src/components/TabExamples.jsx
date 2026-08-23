@@ -1,11 +1,12 @@
-export default function TabExamples({title, tabContent, children, id}) {
+export default function TabExamples({title, menuContent, children, tabComponent, ...props}) {
+    const TabComponent = tabComponent;
     return (
-        <section id={id}>
+        <section {...props}>
             <h2>{title}</h2>
-            <menu>
-                {children}                
-            </menu>
-            {tabContent}
+            <TabComponent>
+                {menuContent}                                
+            </TabComponent>
+            {children}
         </section>
     );
 }

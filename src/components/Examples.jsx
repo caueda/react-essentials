@@ -20,17 +20,20 @@ function Examples() {
       </div>
     );
   }
+  const menuContent = <>
+    {CORE_CONCEPTS.map((concept) => (
+            <TabButton
+            key={concept.id}
+            isSelected={selectedComponent === concept.id}
+            onSelect={() => onSelect(concept.id)}
+            >
+            {concept.title}
+            </TabButton>
+        ))}
+    </>
   return (
-    <TabExamples title="Examples" id="examples" tabContent={tabContent}>
-      {CORE_CONCEPTS.map((concept) => (
-        <TabButton
-          key={concept.id}
-          isSelected={selectedComponent === concept.id}
-          onSelect={() => onSelect(concept.id)}
-        >
-          {concept.title}
-        </TabButton>
-      ))}
+    <TabExamples title="Examples" id="examples" menuContent={menuContent} tabComponent="menu">
+        {tabContent}
     </TabExamples>
   );
 }
