@@ -32,7 +32,7 @@ function Examples() {
         ))}
     </>
   return (
-    <TabExamples title="Examples" id="examples" menuContent={menuContent} tabComponent="menu">
+    <TabExamples title="Examples" id="examples" menuContent={menuContent}>
         {tabContent}
     </TabExamples>
   );
